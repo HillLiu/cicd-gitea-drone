@@ -21,12 +21,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     environment:
-      - DRONE_SERVER_HOST=drone
-      - DRONE_SERVER_PROTO=http
+      - DRONE_USER_CREATE=${DRONE_USER_CREATE}
+      - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
+      - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
       - DRONE_TLS_AUTOCERT=false
       - DRONE_RPC_SECRET=secret
       - DRONE_RUNNER_CAPACITY=3
-      - DRONE_USER_CREATE=${DRONE_USER_CREATE}
       # GitHub Config
       - DRONE_GITEA=true
       - DRONE_GITEA_SERVER=http://gitea:3000
