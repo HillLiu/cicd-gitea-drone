@@ -1,0 +1,21 @@
+version: "2" 
+
+services:
+  drone-bitbucket-cloud:
+    image: drone/drone:latest
+    ports:
+      - "${DRONE_SERVER_BITBUCKET_PORT:-9082}:80"
+    volumes:
+      - ./data/drone-bitbucket-cloud:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    environment:
+      - DRONE_BITBUCKET_CLIENT_ID=${DRONE_BITBUCKET_CLIENT_ID}
+      - DRONE_BITBUCKET_CLIENT_SECRET=${DRONE_BITBUCKET_CLIENT_SECRET}
+      - DRONE_USER_CREATE=${DRONE_USER_CREATE}
+      - DRONE_SERVER_HOST=${DRONE_SERVER_BITBUCKET_HOST}
+      - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
+      - DRONE_TLS_AUTOCERT=false
+      - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
+      - DRONE_RUNNER_CAPACITY=3
+      - DRONE_REPOSITORY_FILTER=${DRONE_REPOSITORY_FILTER}
