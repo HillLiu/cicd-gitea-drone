@@ -3,6 +3,7 @@ version: "2"
 services:
   drone-bitbucket-cloud:
     image: drone/drone:latest
+    hostname: ${DRONE_RUNNER_NAME} 
     ports:
       - "${DRONE_SERVER_BITBUCKET_PORT:-9082}:80"
     volumes:
